@@ -38,7 +38,6 @@ A stylesheet used to stylize a spinner element.
                 left: 50%;
                 position: absolute;
                 top: 50%;
-                -webkit-transform: translate(-50%, -50%);
                 transform: translate(-50%, -50%);
             }
 
@@ -68,7 +67,7 @@ A stylesheet used to stylize a spinner element.
             /* ANIMATIONS */
 
             @-webkit-keyframes spinner-wrapper-rotate {
-                to { -webkit-transform: rotate(360deg); }
+                to { transform: rotate(360deg); }
             }
 
             @keyframes spinner-wrapper-rotate {
