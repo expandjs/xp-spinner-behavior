@@ -28,6 +28,21 @@ A behavior used to add spin capabilities on a custom element.
     Polymer.XPSpinnerBehavior = {
 
         /**
+         * Fired on hide.
+         *
+         * @event xp-hide
+         * @param {Element} firer
+         */
+
+        /**
+         * Fired on show.
+         * @event xp-show
+         * @param {Element} firer
+         */
+
+        /*********************************************************************/
+
+        /**
          * Hides the spinner.
          *
          * @method hide
@@ -87,12 +102,24 @@ A behavior used to add spin capabilities on a custom element.
              * @attribute showed
              * @type boolean
              * @default false
+             * @notifies
              */
             showed: {
+                notify: true,
+                observer: '_showedObserver',
                 reflectToAttribute: true,
                 type: Boolean,
                 value: false
             }
+        },
+
+        /*********************************************************************/
+
+        // OBSERVER
+        _showedObserver: function () {
+
+            // Firing
+            if (this.isAttached) { this.fire(this.showed ? 'xp-show' : 'xp-hide', {firer: this}); }
         },
 
         /*********************************************************************/
